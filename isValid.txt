@@ -1,0 +1,23 @@
+var isValid = function(s) {
+    var collector = [];
+    for(var i = 0; i < s.length; i++){
+        if(s.charAt(i) == '(' || s.charAt(i) == '{' || s.charAt(i) == '[' ){
+            collector.push(s.charAt(i));
+        }else {
+            if(collector.length == 0){
+                return false;
+            }
+            var ch = collector.pop();
+            if(ch == '(' && s.charAt(i) != ')'){
+                return false;
+            }else if(ch == '[' && s.charAt(i) != ']'){
+                return false;
+            }else if(ch == '{' && s.charAt(i) != '}'){
+                return false;
+            }
+        }
+        
+    }
+    return collector.length == 0;
+    
+};
